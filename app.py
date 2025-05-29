@@ -6,13 +6,27 @@ import json
 from werkzeug.utils import secure_filename
 import tempfile
 from datetime import datetime
+import logging
+from logging.handlers import RotatingFileHandler
+
+LOG_FILE = "./logs/app.log"
+logging.basicConfig(
+    filename=LOG_FILE,
+    encoding="utf-8",
+    filemode="a",
+    format="{asctime} - {levelname} - {message}",
+    style="{",
+    datefmt="%Y-%m-%d %H:%M",
+    level=logging.DEBUG,
+)
+handler = RotatingFileHandler(LOG_FILE, maxBytes=5*1024*1024, backupCount=3)
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for frontend-backend communication
 
 # Configuration
-UPLOAD_FOLDER = '/home/dell/Documents/python/pdf-processor/uploads'
-RESULT_FOLDER = '/home/dell/Documents/python/pdf-processor/results'
+UPLOAD_FOLDER = './uploads'
+RESULT_FOLDER = './results'
 RESULT_FILE_NAME = "final.pdf"
 ALLOWED_EXTENSIONS = {'pdf'}
 MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16MB max file size
@@ -51,22 +65,27 @@ def upload_file():
     try:
         # Check if the post request has the file part
         if 'pdfFile' not in request.files:
+            logging.error('error:No PDf file provided ',exc_info=True)
             return jsonify({'error': 'No PDF file provided'}), 400
         
         file = request.files['pdfFile']
-        
+
         # Check if file is selected
         if file.filename == '':
+            logging.error('error:No file selected', exc_info=True)
             return jsonify({'error': 'No file selected'}), 400
         
         # Get text values
-        text1 = request.form.get('text1', '')
-        text2 = request.form.get('text2', '')
-        text3 = request.form.get('text3', '')
-        text4 = request.form.get('text4', '')
+        topn = request.form.get('topn','10')
+        #text2 = request.form.get('text2', '')
+        firstreg = request.form.get('firstreg', 24000000)
+        #text4 = request.form.get('text4', '')
+
+        logging.debug('values are {0} {1}'.format(topn,firstreg))
         
         # Validate text inputs
-        if not all([text1, text2, text3, text4]):
+        if not all([topn,firstreg]):
+            logging.error('Values are missing.',exc_info=True)
             return jsonify({'error': 'All text fields are required'}), 400
         
         if file and allowed_file(file.filename):
@@ -77,22 +96,23 @@ def upload_file():
             import time
             timestamp = str(int(time.time()))
             filename = f"{timestamp}_{filename}"
+            logging.info("File name is "+filename)
             
             # Save the uploaded file
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(filepath)
+            logging.info("Uploaded file path is "+filepath)
             
             # Prepare data for Python script
             script_data = {
                 'pdf_path': filepath,
-                'text1': text1,
-                'text2': text2,
-                'text3': text3,
-                'text4': text4,
+                'topn': topn,
+                'firstreg': firstreg,
                 'filename': filename,
                 'result_folder': app.config['RESULT_FOLDER']
             }
-            
+            logging.debug("data to python script is "+','.join(str(value) for value in script_data.values()))
+
             # Run the Python processing script
             result_info = run_processing_script(script_data)
             
@@ -123,6 +143,7 @@ def run_processing_script(data):
     Run your custom Python script with the uploaded PDF and text values
     Returns info about the generated result PDF file
     """
+    logging.debug("inside the run processing script function")
     try:
         # Create temporary JSON file with parameters
         with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as temp_file:
@@ -133,12 +154,16 @@ def run_processing_script(data):
             # Run the processing script
             script_path = 'main.py'
             result = subprocess.run([
-                'python3', script_path, data['pdf_path'], data['text1'],data['text2'],RESULT_FOLDER,RESULT_FILE_NAME
+                'python3', script_path, data['pdf_path'], data['topn'],data['firstreg'],RESULT_FOLDER,RESULT_FILE_NAME
             ], capture_output=True, text=True, timeout=300)  # 5 minute timeout
-            
+            logging.debug("File for upload : "+data['pdf_path'])
+            logging.info("Output of the script is "+result.stdout)
+            logging.error("Error "+result.stderr)
+
             if result.returncode == 0:
                 # Script executed successfully
                 output_lines = result.stdout.strip().split('\n')
+                logging.debug("Output lines"+','.join(output_lines))
                 
                 # Look for the result PDF filename in the output
                 result_filename = None
@@ -146,6 +171,7 @@ def run_processing_script(data):
                     if line.startswith('Results saved to:'):
                         result_filename = line.replace('Results saved to:', '').strip()
                         print(result_filename)
+                        logging.debug("File name (inside script) : "+result_filename)
                         break
                 
                 if result_filename and os.path.exists(os.path.join(data['result_folder'], result_filename)):
@@ -162,6 +188,7 @@ def run_processing_script(data):
             else:
                 # Script failed
                 error_msg = result.stderr.strip()
+                logging.error(error_msg,stack_info=True)
                 return {
                     'success': False,
                     'error': f"Processing failed: {error_msg}"

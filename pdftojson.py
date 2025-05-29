@@ -2,6 +2,7 @@ from pypdf import PdfReader
 import re
 import json
 import configparser
+import logging
 
 global school_code
 global school_name
@@ -38,7 +39,7 @@ def file_converter(file_name):
     exam_class = " ".join(exam_details.split(" ")[0:3])
 
     configwrite(school_name,school_code,exam_details,school_district,exam_month,exam_year,exam_class)
-    print("Configuration created successfully")
+    logging.debug("Configuration created successfully")
 
     for i in range(total_pages):
         page = reader.pages[i]
@@ -46,11 +47,18 @@ def file_converter(file_name):
         student_blocks = re.findall(pattern, texts, re.DOTALL)
         student_blocks = [b.replace("COMPUTER\nSCIENCE","CS").strip() for b in student_blocks]
         student_blocks = [b.replace("\n", " ").strip() for b in student_blocks]
-        #student_blocks = [b.replace(" ","_").strip() for b in student_blocks]
         student_blocks = [b.replace("BUSINESS STUDIES WITH FUNCTIONAL MANAGEMENT", "BUSINESS_STUDIES").strip() for b in student_blocks]
         student_blocks = [b.replace("ACCOUNTANCY WITH COMPUTER ACCOUNTING", "ACCOUNTANCY").strip() for b in student_blocks]
         student_blocks = [b.replace("POLITICAL SCIENCE", "POLITICAL_SCIENCE").strip() for b in student_blocks]
         student_blocks = [b.replace("COMPUTER APPLICATION", "CA").strip() for b in student_blocks]
+        student_blocks = [b.replace("HOME SCIENCE","HOME_SCIENCE").strip() for b in student_blocks]
+        student_blocks = [b.replace("GANDHIAN STUDIES","GANDHIAN_STUDIES").strip() for b in student_blocks]
+        student_blocks = [b.replace("SOCIAL WORK","SOCIAL_WORK").strip() for b in student_blocks]
+        student_blocks = [b.replace("ISLAMIC HISTORY","ISLAMIC_HISTORY").strip() for b in student_blocks]
+        student_blocks = [b.replace("SANSKRIT SAHITYA","SANSKRIT_SAHITYA").strip() for b in student_blocks]
+        student_blocks = [b.replace("SANSKRIT SASTRA","SANSKRIT_SASTRA").strip() for b in student_blocks]
+        student_blocks = [b.replace("COMMUNICATIVE ENGLISH","COMMUNICATIVE_ENGLISH").strip() for b in student_blocks]
+        student_blocks = [b.replace("ELECTRONIC SYSTEM", "ELECTRONIC_SYSTEM").strip() for b in student_blocks]
         students_data = students_data + student_blocks
 
     #print(students_data)

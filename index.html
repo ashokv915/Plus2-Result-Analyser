@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Upload Form</title>
+    <title>Kerala Higher Secondary Result Analysis</title>
     <style>
         * {
             margin: 0;
@@ -243,11 +243,11 @@
 </head>
 <body>
     <div class="container">
-        <h1>📄 PDF Upload Form</h1>
+        <h1>📄 Complete Result Analysis </h1>
         
         <form id="uploadForm">
             <div class="form-group">
-                <label for="pdfFile">Select PDF File:</label>
+                <label for="pdfFile">Select  Result PDF File:</label>
                 <div class="file-input-wrapper">
                     <button type="button" class="file-input-button" onclick="document.getElementById('pdfFile').click()">
                         Choose PDF File
@@ -259,36 +259,36 @@
 
             <div class="text-inputs">
                 <div class="form-group">
-                    <label for="text1">Text 1:</label>
-                    <input type="text" id="text1" name="text1" placeholder="Enter text 1" required>
+                    <label for="topn">Input Number of top Students:</label>
+                    <input type="text" id="topn" name="topn" placeholder="Toppers count" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="text2">Text 2:</label>
-                    <input type="text" id="text2" name="text2" placeholder="Enter text 2" required>
-                </div>
+                <!-- <div class="form-group">
+                    <label for="text2">Need Full List ?:</label>
+                    <input type="text" id="text2" name="text2" placeholder="need full student list" required>
+                </div> -->
 
                 <div class="form-group">
-                    <label for="text3">Text 3:</label>
-                    <input type="text" id="text3" name="text3" placeholder="Enter text 3" required>
+                    <label for="firstreg">First Register number :</label>
+                    <input type="text" id="firstreg" name="firstreg" placeholder="First student register number" required>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="text4">Text 4:</label>
                     <input type="text" id="text4" name="text4" placeholder="Enter text 4" required>
-                </div>
+                </div> -->
             </div>
 
-            <button type="submit" class="submit-btn">🚀 Submit Form</button>
+            <button type="submit" class="submit-btn">🚀 Get Analysis</button>
         </form>
 
         <div id="successMessage" class="success-message">
-            ✅ Form submitted successfully!
+            ✅ Result submitted successfully!
         </div>
 
         <div id="processingIndicator" class="processing-indicator">
             <div class="spinner"></div>
-            <strong>Processing your PDF...</strong><br>
+            <strong>Processing your Result...</strong><br>
             <small>This may take a few moments</small>
         </div>
 
@@ -322,10 +322,10 @@
             // Get form data
             const formData = new FormData();
             const pdfFile = document.getElementById('pdfFile').files[0];
-            const text1 = document.getElementById('text1').value;
-            const text2 = document.getElementById('text2').value;
-            const text3 = document.getElementById('text3').value;
-            const text4 = document.getElementById('text4').value;
+            const topn = document.getElementById('topn').value;
+            //const text2 = document.getElementById('text2').value;
+            const firstreg = document.getElementById('firstreg').value;
+            //const text4 = document.getElementById('text4').value;
             
             // Validate PDF file
             if (!pdfFile) {
@@ -340,10 +340,10 @@
             
             // Add data to FormData
             formData.append('pdfFile', pdfFile);
-            formData.append('text1', text1);
-            formData.append('text2', text2);
-            formData.append('text3', text3);
-            formData.append('text4', text4);
+            formData.append('topn', topn);
+            //formData.append('text2', text2);
+            formData.append('firstreg', firstreg);
+            //formData.append('text4', text4);
             
             // Show processing indicator
             document.getElementById('processingIndicator').style.display = 'block';

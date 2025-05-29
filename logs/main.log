@@ -1,0 +1,63 @@
+2025-05-29 22:40 - DEBUG - File format is pdf
+2025-05-29 22:40 - DEBUG - Result folder ./results
+2025-05-29 22:40 - DEBUG - Result File Name final.pdf
+2025-05-29 22:40 - DEBUG - Result File Path ./results/final.pdf
+2025-05-29 22:40 - DEBUG - Configuration created successfully
+2025-05-29 22:40 - INFO - PDF File Successfully converted into JSON
+2025-05-29 22:40 - INFO - Number of toppers student 20
+2025-05-29 22:40 - INFO - First Register number 24000000
+2025-05-29 22:42 - DEBUG - File format is pdf
+2025-05-29 22:42 - DEBUG - Result folder ./results
+2025-05-29 22:42 - DEBUG - Result File Name final.pdf
+2025-05-29 22:42 - DEBUG - Result File Path ./results/final.pdf
+2025-05-29 22:42 - DEBUG - Configuration created successfully
+2025-05-29 22:42 - INFO - PDF File Successfully converted into JSON
+2025-05-29 22:42 - INFO - Number of toppers student 20
+2025-05-29 22:42 - INFO - First Register number 24000000
+2025-05-29 22:42 - DEBUG - Page break on page 1 at y=269 for element of height 9 > 277
+2025-05-29 22:42 - DEBUG - Page break on page 2 at y=271 for element of height 7 > 277
+2025-05-29 22:42 - DEBUG - Page break on page 3 at y=279 for element of height 7 > 277
+2025-05-29 22:42 - DEBUG - Page break on page 3 at y=279 for element of height 15 > 277
+2025-05-29 22:42 - DEBUG - Page break on page 4 at y=275 for element of height 9 > 277
+2025-05-29 22:42 - DEBUG - Page break on page 5 at y=266 for element of height 15 > 277
+2025-05-29 22:42 - DEBUG - Page break on page 6 at y=286 for element of height 0 > 277
+2025-05-29 22:42 - DEBUG - Page break on page 7 at y=270 for element of height 7 > 277
+2025-05-29 22:42 - DEBUG - Page break on page 7 at y=262 for element of height 23 > 277
+2025-05-29 22:42 - DEBUG - Page break on page 8 at y=276 for element of height 7 > 277
+2025-05-29 22:42 - DEBUG - Page break on page 9 at y=273 for element of height 7 > 277
+2025-05-29 22:42 - DEBUG - Page break on page 10 at y=273 for element of height 7 > 277
+2025-05-29 22:42 - DEBUG - Page break on page 11 at y=273 for element of height 7 > 277
+2025-05-29 22:42 - DEBUG - Page break on page 12 at y=273 for element of height 7 > 277
+2025-05-29 22:42 - DEBUG - Page break on page 13 at y=273 for element of height 7 > 277
+2025-05-29 22:42 - DEBUG - Page break on page 14 at y=273 for element of height 7 > 277
+2025-05-29 22:42 - DEBUG - Final size summary of the biggest document sections:
+2025-05-29 22:42 - DEBUG - - pages: 30.4KiB
+2025-05-29 22:42 - DEBUG - - fonts: 405.0B
+2025-05-29 22:42 - INFO - Analysis completed PDF Generated and Going to do watermark
+2025-05-29 22:49 - DEBUG - File format is pdf
+2025-05-29 22:49 - DEBUG - Result folder ./results
+2025-05-29 22:49 - DEBUG - Result File Name final.pdf
+2025-05-29 22:49 - DEBUG - Result File Path ./results/final.pdf
+2025-05-29 22:49 - DEBUG - Configuration created successfully
+2025-05-29 22:49 - INFO - PDF File Successfully converted into JSON
+2025-05-29 22:49 - INFO - Number of toppers student 10
+2025-05-29 22:49 - INFO - First Register number 24000000
+2025-05-29 22:49 - DEBUG - Page break on page 1 at y=269 for element of height 9 > 277
+2025-05-29 22:49 - DEBUG - Page break on page 2 at y=271 for element of height 7 > 277
+2025-05-29 22:49 - DEBUG - Page break on page 3 at y=275 for element of height 7 > 277
+2025-05-29 22:49 - DEBUG - Page break on page 4 at y=263 for element of height 15 > 277
+2025-05-29 22:49 - DEBUG - Page break on page 5 at y=268 for element of height 15 > 277
+2025-05-29 22:49 - DEBUG - Page break on page 6 at y=278 for element of height 0 > 277
+2025-05-29 22:49 - DEBUG - Page break on page 7 at y=278 for element of height 7 > 277
+2025-05-29 22:49 - DEBUG - Page break on page 7 at y=278 for element of height 15 > 277
+2025-05-29 22:49 - DEBUG - Page break on page 8 at y=271 for element of height 7 > 277
+2025-05-29 22:49 - DEBUG - Page break on page 9 at y=273 for element of height 7 > 277
+2025-05-29 22:49 - DEBUG - Page break on page 10 at y=273 for element of height 7 > 277
+2025-05-29 22:49 - DEBUG - Page break on page 11 at y=273 for element of height 7 > 277
+2025-05-29 22:49 - DEBUG - Page break on page 12 at y=273 for element of height 7 > 277
+2025-05-29 22:49 - DEBUG - Page break on page 13 at y=273 for element of height 7 > 277
+2025-05-29 22:49 - DEBUG - Page break on page 14 at y=273 for element of height 7 > 277
+2025-05-29 22:49 - DEBUG - Final size summary of the biggest document sections:
+2025-05-29 22:49 - DEBUG - - pages: 29.7KiB
+2025-05-29 22:49 - DEBUG - - fonts: 405.0B
+2025-05-29 22:49 - INFO - Analysis completed PDF Generated and Going to do watermark

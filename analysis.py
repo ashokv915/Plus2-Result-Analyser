@@ -19,9 +19,9 @@ from fpdf import XPos,YPos
 def main():
     pass
 
-def final_analysis(school_name,school_code,school_district,exam_name,exam_month,exam_year,exam_class,no_rank,isfull,final_pdf):
+def final_analysis(school_name,school_code,school_district,exam_name,exam_month,exam_year,exam_class,no_rank,final_pdf,current_reg_no):
     output_file_name = "result_data_1.json"
-    starting_reg_no = 24000000
+    starting_reg_no = int(current_reg_no)
     RESULT_FILE = final_pdf
 
     pdf = FPDF('P','mm','A4')
@@ -52,7 +52,7 @@ def final_analysis(school_name,school_code,school_district,exam_name,exam_month,
 
     #Overall Pass Percentage
     df = df.astype({'register_no':int})
-    df = df[df['register_no'] > starting_reg_no]
+    df = df[df['register_no'] >= starting_reg_no]
     num_of_sub = df.groupby(["register_no","name","group","result"], as_index=False)[["marks"]].sum()
     total_students = num_of_sub.shape[0]
     failed_stud = num_of_sub[num_of_sub['result']=='NHS'].shape[0]
@@ -62,7 +62,7 @@ def final_analysis(school_name,school_code,school_district,exam_name,exam_month,
 
     #Overall Pass Percentage
     df = df.astype({'register_no':int})
-    df = df[df['register_no'] > starting_reg_no]
+    df = df[df['register_no'] >= starting_reg_no]
     num_of_sub = df.groupby(["register_no","name","group","result"], as_index=False)[["marks"]].sum()
     total_students = num_of_sub.shape[0]
     failed_stud = num_of_sub[num_of_sub['result']=='NHS'].shape[0]
@@ -267,7 +267,7 @@ def final_analysis(school_name,school_code,school_district,exam_name,exam_month,
 
     
     #STUDENTS PERCENTAGE
-    if(isfull):
+    if(True):
         pdf.set_font("times","UI",14)
         pw = pdf.w - 2 * pdf.l_margin
         pdf.cell(pw,0.0,"Percentage of Marks", align="C")

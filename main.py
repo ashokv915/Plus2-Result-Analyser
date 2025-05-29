@@ -4,32 +4,58 @@ import analysis
 import configparser
 import watermarking
 import os
+import logging
+from logging.handlers import RotatingFileHandler
 
 config = configparser.ConfigParser()
 
+
 def main(argv):
+
+    LOG_FILE = "./logs/main.log"
+    logging.basicConfig(
+    filename=LOG_FILE,
+    encoding="utf-8",
+    filemode="a",
+    format="{asctime} - {levelname} - {message}",
+    style="{",
+    datefmt="%Y-%m-%d %H:%M",
+    level=logging.DEBUG,
+    )
+    handler = RotatingFileHandler(LOG_FILE, maxBytes=5*1024*1024, backupCount=3)
+
+
     pdf=0
     file_format = argv[1].split(".")
+    logging.debug("File format is "+file_format[2])
     RESULT_FOLDER = argv[4]
+    logging.debug("Result folder "+RESULT_FOLDER)
     RESULT_FILE_NAME = argv[5]
+    logging.debug("Result File Name "+RESULT_FILE_NAME)
     RESULT_FILE_PATH = os.path.join(RESULT_FOLDER,RESULT_FILE_NAME)
-    WATER_MARK_FILE = "water"+"_"+RESULT_FILE_NAME
-    if(file_format[1]=="pdf"):
+    logging.debug("Result File Path "+RESULT_FILE_PATH)
+    WATER_MARK_FILE = "_"+RESULT_FILE_NAME
+    if(file_format[2]=="pdf"):
         pdf=1
         print("Format is PDF")
         pdftojson.file_converter(argv[1])
+        logging.info("PDF File Successfully converted into JSON")
         print("conversion completed")
         config.read('config.ini')
         school_name = config['school']['school_name']
         school_code = config['school']['school_code']
+        WATER_MARK_FILE = school_code+"_"+RESULT_FILE_NAME
         school_district = config['school']['district']
         exam_name = config['school']['exam_name']
         exam_month = config['school']['exam_month']
         exam_year = config['school']['exam_year']
         exam_class = config['school']['exam_class']
         no_rank = int(argv[2])
-        isfull = bool(argv[3])
-        analysis.final_analysis(school_name,school_code,school_district,exam_name,exam_month,exam_year,exam_class,no_rank,isfull,RESULT_FILE_PATH)
+        logging.info("Number of toppers student "+argv[2])
+        current_reg_no = argv[3]
+        logging.info("First Register number "+current_reg_no)
+        analysis.final_analysis(school_name,school_code,school_district,exam_name,exam_month,exam_year,exam_class,no_rank,RESULT_FILE_PATH,current_reg_no)
+        logging.info("Analysis completed PDF Generated and Going to do watermark")
         watermarking.do_watermark(RESULT_FILE_PATH,"Ashok3.pdf",RESULT_FOLDER,WATER_MARK_FILE)
         #print("Watermarking Done")
         print(f"Results saved to: {WATER_MARK_FILE}")
