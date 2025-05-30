@@ -143,7 +143,7 @@ def run_processing_script(data):
     Run your custom Python script with the uploaded PDF and text values
     Returns info about the generated result PDF file
     """
-    logging.debug("inside the run processing script function")
+    logging.info("inside the run processing script function")
     try:
         # Create temporary JSON file with parameters
         with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as temp_file:
