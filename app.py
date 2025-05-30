@@ -8,8 +8,10 @@ import tempfile
 from datetime import datetime
 import logging
 from logging.handlers import RotatingFileHandler
+import os
 
-LOG_FILE = "./logs/app.log"
+LOG_FOLDER = "/tmp"
+LOG_FILE = "/tmp/logs/app.log"
 logging.basicConfig(
     filename=LOG_FILE,
     encoding="utf-8",
@@ -25,8 +27,8 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS for frontend-backend communication
 
 # Configuration
-UPLOAD_FOLDER = './uploads'
-RESULT_FOLDER = './results'
+UPLOAD_FOLDER = '/tmp/uploads'
+RESULT_FOLDER = '/tmp/results'
 RESULT_FILE_NAME = "final.pdf"
 ALLOWED_EXTENSIONS = {'pdf'}
 MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16MB max file size
@@ -38,6 +40,9 @@ app.config['MAX_CONTENT_LENGTH'] = MAX_CONTENT_LENGTH
 # Create directories if they don't exist
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(RESULT_FOLDER, exist_ok=True)
+os.makedirs(LOG_FOLDER,exist_ok=True)
+logging.info("All required folders are created+++++++")
+print("Created folders...........")
 
 def allowed_file(filename):
     return '.' in filename and \
