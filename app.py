@@ -10,7 +10,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 import os
 
-LOG_FOLDER = "/tmp"
+LOG_FOLDER = "/tmp/logs"
 LOG_FILE = "/tmp/logs/app.log"
 os.makedirs(LOG_FOLDER,exist_ok=True)
 logging.basicConfig(
