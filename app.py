@@ -88,7 +88,7 @@ def upload_file():
         #text4 = request.form.get('text4', '')
 
         logging.debug('values are {0} {1}'.format(topn,firstreg))
-        
+        print("Values are "+topn+" "+firstreg)
         # Validate text inputs
         if not all([topn,firstreg]):
             logging.error('Values are missing.',exc_info=True)
@@ -159,6 +159,7 @@ def run_processing_script(data):
         
         try:
             # Run the processing script
+            print("Running the script+++++++++")
             script_path = 'main.py'
             result = subprocess.run([
                 'python3', script_path, data['pdf_path'], data['topn'],data['firstreg'],RESULT_FOLDER,RESULT_FILE_NAME
@@ -211,6 +212,8 @@ def run_processing_script(data):
             'error': "Processing timeout - script took too long to execute"
         }
     except Exception as e:
+        logging.error(e)
+        print("Error........."+e.stderr)
         return {
             'success': False,
             'error': f"Processing error: {str(e)}"
