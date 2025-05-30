@@ -220,8 +220,12 @@ def run_processing_script(data):
         }
 
 if __name__ == '__main__':
-    print("Starting PDF Processing Server...")
-    print("Upload folder:", os.path.abspath(UPLOAD_FOLDER))
-    print("Result folder:", os.path.abspath(RESULT_FOLDER))
-    print("Server running at: http://localhost:5000")
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    try:
+        print("Starting PDF Processing Server...")
+        print("Upload folder:", os.path.abspath(UPLOAD_FOLDER))
+        print("Result folder:", os.path.abspath(RESULT_FOLDER))
+        print("Server running at: http://localhost:5000")
+        app.run(debug=True, host='0.0.0.0', port=5000)
+    except Exception as e:
+        logging.error(e)
+        print("Error ......."+e.stderr)
