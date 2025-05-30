@@ -102,6 +102,7 @@ def upload_file():
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(filepath)
             logging.info("Uploaded file path is "+filepath)
+            print("++++++++++++++++++++++++++++")
             
             # Prepare data for Python script
             script_data = {
