@@ -111,11 +111,13 @@ def file_converter(file_name):
     with open(output_file_name,"w") as json_file:
         json.dump(stud_dict,json_file,indent=4)
 
+    return school_code
+
 
 
 def configwrite(schoolname, schoolcode,examname,district,month,year,examclass):
     config = configparser.ConfigParser()
-    config['school'] = {
+    config[schoolcode] = {
         'school_code' : schoolcode,
         'school_name' : schoolname,
         'district' : district,

@@ -1,0 +1,64 @@
+2025-06-02 01:07 - INFO - All required folders are created+++++++
+2025-06-02 01:07 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.150.165:5000
+2025-06-02 01:07 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-02 01:07 - INFO -  * Restarting with stat
+2025-06-02 01:07 - INFO - All required folders are created+++++++
+2025-06-02 01:07 - WARNING -  * Debugger is active!
+2025-06-02 01:07 - INFO -  * Debugger PIN: 532-362-808
+2025-06-02 01:07 - INFO - 127.0.0.1 - - [02/Jun/2025 01:07:13] "[36mGET / HTTP/1.1[0m" 304 -
+2025-06-02 01:07 - DEBUG - values are 8 24000000
+2025-06-02 01:07 - INFO - File name is 1748806638_full_result.pdf
+2025-06-02 01:07 - INFO - Uploaded file path is ./uploads/1748806638_full_result.pdf
+2025-06-02 01:07 - DEBUG - data to python script is ./uploads/1748806638_full_result.pdf,8,24000000,1748806638_full_result.pdf,./results
+2025-06-02 01:07 - INFO - inside the run processing script function
+2025-06-02 01:07 - DEBUG - File for upload : ./uploads/1748806638_full_result.pdf
+2025-06-02 01:07 - INFO - Output of the script is File format is /uploads/1748806638_full_result
+Check your File name extension, It should always either PDF or CSV
+
+2025-06-02 01:07 - ERROR - Error /home/dell/.local/lib/python3.10/site-packages/fpdf/__init__.py:40: UserWarning: You have both PyFPDF & fpdf2 installed. Both packages cannot be installed at the same time as they share the same module namespace. To only keep fpdf2, run: pip uninstall --yes pypdf && pip install --upgrade fpdf2
+  warnings.warn(
+
+2025-06-02 01:07 - DEBUG - Output linesFile format is /uploads/1748806638_full_result,Check your File name extension, It should always either PDF or CSV
+2025-06-02 01:07 - INFO - 127.0.0.1 - - [02/Jun/2025 01:07:19] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+2025-06-02 01:08 - INFO -  * Detected change in '/home/dell/Documents/python/pdf-processor/main.py', reloading
+2025-06-02 01:08 - INFO -  * Restarting with stat
+2025-06-02 01:08 - INFO - All required folders are created+++++++
+2025-06-02 01:08 - WARNING -  * Debugger is active!
+2025-06-02 01:08 - INFO -  * Debugger PIN: 532-362-808
+2025-06-02 01:08 - INFO -  * Detected change in '/home/dell/Documents/python/pdf-processor/main.py', reloading
+2025-06-02 01:08 - INFO -  * Restarting with stat
+2025-06-02 01:08 - INFO - All required folders are created+++++++
+2025-06-02 01:08 - WARNING -  * Debugger is active!
+2025-06-02 01:08 - INFO -  * Debugger PIN: 532-362-808
+2025-06-02 01:08 - INFO -  * Detected change in '/home/dell/Documents/python/pdf-processor/main.py', reloading
+2025-06-02 01:08 - INFO -  * Restarting with stat
+2025-06-02 01:08 - INFO - All required folders are created+++++++
+2025-06-02 01:08 - WARNING -  * Debugger is active!
+2025-06-02 01:08 - INFO -  * Debugger PIN: 532-362-808
+2025-06-02 01:08 - INFO -  * Detected change in '/home/dell/Documents/python/pdf-processor/main.py', reloading
+2025-06-02 01:08 - INFO -  * Restarting with stat
+2025-06-02 01:08 - INFO - All required folders are created+++++++
+2025-06-02 01:08 - WARNING -  * Debugger is active!
+2025-06-02 01:08 - INFO -  * Debugger PIN: 532-362-808
+2025-06-02 01:08 - INFO - 127.0.0.1 - - [02/Jun/2025 01:08:54] "[36mGET / HTTP/1.1[0m" 304 -
+2025-06-02 01:08 - DEBUG - values are 8 24000000
+2025-06-02 01:08 - INFO - File name is 1748806739_full_result.pdf
+2025-06-02 01:08 - INFO - Uploaded file path is ./uploads/1748806739_full_result.pdf
+2025-06-02 01:08 - DEBUG - data to python script is ./uploads/1748806739_full_result.pdf,8,24000000,1748806739_full_result.pdf,./results
+2025-06-02 01:08 - INFO - inside the run processing script function
+2025-06-02 01:09 - DEBUG - File for upload : ./uploads/1748806739_full_result.pdf
+2025-06-02 01:09 - INFO - Output of the script is File format is pdf
+Format is PDF
+conversion completed
+Results saved to: 12021_final.pdf
+
+2025-06-02 01:09 - ERROR - Error /home/dell/.local/lib/python3.10/site-packages/fpdf/__init__.py:40: UserWarning: You have both PyFPDF & fpdf2 installed. Both packages cannot be installed at the same time as they share the same module namespace. To only keep fpdf2, run: pip uninstall --yes pypdf && pip install --upgrade fpdf2
+  warnings.warn(
+
+2025-06-02 01:09 - DEBUG - Output linesFile format is pdf,Format is PDF,conversion completed,Results saved to: 12021_final.pdf
+2025-06-02 01:09 - DEBUG - File name (inside script) : 12021_final.pdf
+2025-06-02 01:09 - INFO - 127.0.0.1 - - [02/Jun/2025 01:09:08] "POST /upload HTTP/1.1" 200 -
+2025-06-02 01:09 - INFO - 127.0.0.1 - - [02/Jun/2025 01:09:26] "GET /download/12021_final.pdf HTTP/1.1" 200 -

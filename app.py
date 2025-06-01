@@ -10,8 +10,8 @@ import logging
 from logging.handlers import RotatingFileHandler
 import os
 
-LOG_FOLDER = "/tmp/logs"
-LOG_FILE = "/tmp/logs/app.log"
+LOG_FOLDER = "./logs"
+LOG_FILE = "./logs/app.log"
 os.makedirs(LOG_FOLDER,exist_ok=True)
 logging.basicConfig(
     filename=LOG_FILE,
@@ -28,8 +28,8 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS for frontend-backend communication
 
 # Configuration
-UPLOAD_FOLDER = '/tmp/uploads'
-RESULT_FOLDER = '/tmp/results'
+UPLOAD_FOLDER = './uploads'
+RESULT_FOLDER = './results'
 RESULT_FILE_NAME = "final.pdf"
 ALLOWED_EXTENSIONS = {'pdf'}
 MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16MB max file size

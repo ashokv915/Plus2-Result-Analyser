@@ -27,7 +27,8 @@ def main(argv):
 
     pdf=0
     file_format = argv[1].split(".")
-    logging.debug("File format is "+file_format[1])
+    print("File format is "+file_format[2])
+    logging.debug("File format is "+file_format[2])
     RESULT_FOLDER = argv[4]
     logging.debug("Result folder "+RESULT_FOLDER)
     RESULT_FILE_NAME = argv[5]
@@ -35,21 +36,21 @@ def main(argv):
     RESULT_FILE_PATH = os.path.join(RESULT_FOLDER,RESULT_FILE_NAME)
     logging.debug("Result File Path "+RESULT_FILE_PATH)
     WATER_MARK_FILE = "_"+RESULT_FILE_NAME
-    if(file_format[1]=="pdf"):
+    if(file_format[2]=="pdf"):
         pdf=1
         print("Format is PDF")
-        pdftojson.file_converter(argv[1])
+        school_code = pdftojson.file_converter(argv[1])
         logging.info("PDF File Successfully converted into JSON")
         print("conversion completed")
         config.read('config.ini')
-        school_name = config['school']['school_name']
-        school_code = config['school']['school_code']
+        school_name = config[school_code]['school_name']
+        #school_code = config['school']['school_code']
         WATER_MARK_FILE = school_code+"_"+RESULT_FILE_NAME
-        school_district = config['school']['district']
-        exam_name = config['school']['exam_name']
-        exam_month = config['school']['exam_month']
-        exam_year = config['school']['exam_year']
-        exam_class = config['school']['exam_class']
+        school_district = config[school_code]['district']
+        exam_name = config[school_code]['exam_name']
+        exam_month = config[school_code]['exam_month']
+        exam_year = config[school_code]['exam_year']
+        exam_class = config[school_code]['exam_class']
         no_rank = int(argv[2])
         logging.info("Number of toppers student "+argv[2])
         current_reg_no = argv[3]
@@ -59,7 +60,7 @@ def main(argv):
         watermarking.do_watermark(RESULT_FILE_PATH,"Ashok3.pdf",RESULT_FOLDER,WATER_MARK_FILE)
         #print("Watermarking Done")
         print(f"Results saved to: {WATER_MARK_FILE}")
-    elif(file_format[1]=="csv"):
+    elif(file_format[2]=="csv"):
         pdf=0
         print("Format is CSV")
     else:
