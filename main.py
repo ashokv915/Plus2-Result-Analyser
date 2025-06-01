@@ -27,7 +27,7 @@ def main(argv):
 
     pdf=0
     file_format = argv[1].split(".")
-    logging.debug("File format is "+file_format[2])
+    logging.debug("File format is "+file_format[1])
     RESULT_FOLDER = argv[4]
     logging.debug("Result folder "+RESULT_FOLDER)
     RESULT_FILE_NAME = argv[5]
@@ -35,7 +35,7 @@ def main(argv):
     RESULT_FILE_PATH = os.path.join(RESULT_FOLDER,RESULT_FILE_NAME)
     logging.debug("Result File Path "+RESULT_FILE_PATH)
     WATER_MARK_FILE = "_"+RESULT_FILE_NAME
-    if(file_format[2]=="pdf"):
+    if(file_format[1]=="pdf"):
         pdf=1
         print("Format is PDF")
         pdftojson.file_converter(argv[1])
